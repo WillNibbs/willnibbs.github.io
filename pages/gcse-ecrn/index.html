@@ -40,14 +40,15 @@
             font-size: 1.5rem;
             font-weight: 600;
             letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         .logo-image {
             width: 40px;
             height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            object-fit:contain;
         }
 
         .logo-divider {
@@ -399,11 +400,9 @@
 <body>
     <header>
         <nav>
-            <div class="logo-image"><object
-                  type="image/png"
-                  data="/images/ecr-logo-final.png"
-                class="logo-image"
-            ></object></div>
+            <div class="logo">
+                  <img src="/images/ecr-logo-final.png" alt="ECR Logo" class="logo-image">
+           </div>
             <span class="logo-divider">|</span>
             <div class="logo">GCSE ECR Network</div>
             <ul class="nav-links">
