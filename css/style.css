@@ -461,6 +461,8 @@ code {
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
+          max-width: 1200px;
+          margin: 0 auto;
         }
 
         .panel:hover {
@@ -595,11 +597,12 @@ code {
         }
         
         .panel-text {
-            flex: 0 0 70%; /* Takes exactly 70% of the width */
+            flex: 0 0 70%; 
         }
         
         .panel-image {
-            flex: 0 0 calc(30% - 20px); /* Takes remaining 30% minus the gap */
+            flex: 0 0 calc(30% - 20px); 
+          height: 100%;
         }
         
         .panel-image img {
