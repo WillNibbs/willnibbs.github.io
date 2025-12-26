@@ -36,47 +36,11 @@
 
 
 
-
-<div class="container">
     <div class="hero">
                 <h1>Past events </h1>
               <p> Check out our previous events.  </p>
      </div>
-    
-    <div class="grid" id="grid">
-      
-      <div class="grid-item" data-title="Image One" data-description="Description for the first image. Add your own text here to describe what this image shows.">
-        <img src="/images/Energy-Nexus-Roundtable.png" alt="Image One">
-        <div class="grid-item-title">Image One</div>
-      </div>
 
-      <div class="grid-item" data-title="Image Two" data-description="Description for the second image. You can include any details or information about this image.">
-        <img src="/images/Energy-Nexus-Roundtable.png" alt="Image Two">
-        <div class="grid-item-title">Image Two</div>
-      </div>
-
-      <div class="grid-item" data-title="Image Three" data-description="Description for the third image. Add relevant information that helps explain the image content.">
-        <img src="/images/Energy-Nexus-Roundtable.png" alt="Image Three">
-        <div class="grid-item-title">Image Three</div>
-      </div>
-
-      <div class="grid-item" data-title="Image Four" data-description="Description for the fourth image. Include any context or details you want users to know.">
-        <img src="/images/Energy-Nexus-Roundtable.png" alt="Image Four">
-        <div class="grid-item-title">Image Four</div>
-      </div>
-
-      <div class="grid-item" data-title="Image Five" data-description="Description for the fifth image. Share interesting facts or background information here.">
-        <img src="/images/Energy-Nexus-Roundtable.png" alt="Image Five">
-        <div class="grid-item-title">Image Five</div>
-      </div>
-
-      <div class="grid-item" data-title="Image Six" data-description="Description for the sixth image. Customize this text to match your specific image content.">
-        <img src="/images/Energy-Nexus-Roundtable.png" alt="Image Six">
-        <div class="grid-item-title">Image Six</div>
-      </div>
-
-    </div>
-  </div>
 
     
     <footer>
@@ -118,39 +82,88 @@
 
     
     
-    <script>
-
-    
+   
+        const items = [
+      { 
+        id: 1, 
+        title: 'Event', 
+        img: '/images/Energy-Nexus-Roundtable.png', 
+        desc: 'Bio.' 
+      },
+      { 
+        id: 2, 
+        title: 'EVent', 
+        img: '/images/Energy-Nexus-Roundtable.png', 
+        desc: 'Bio.' 
+      },
+      { 
+        id: 3, 
+        title: 'Event', 
+        img: '/images/Energy-Nexus-Roundtable.png', 
+        desc: 'Bio.' 
+      },
+    { 
+        id: 4, 
+        title: 'Event', 
+        img: '/images/Energy-Nexus-Roundtable.png', 
+        desc: 'Bio.' 
+      },
+      { 
+        id: 5, 
+        title: 'Event', 
+        img: '/images/Energy-Nexus-Roundtable.png', 
+        desc: 'Bio.' 
+      },
+      { 
+        id: 6, 
+        title: 'Event', 
+        img: '/images/generic-person.png', 
+        desc: 'Bio.' 
+      },
+        { 
+        id: 7, 
+        title: 'Event', 
+        img: '/images/Energy-Nexus-Roundtable.png', 
+        desc: 'Bio.' 
+      },
+      { 
+        id: 8, 
+        title: 'Event', 
+        img: '/images/Energy-Nexus-Roundtable.png', 
+        desc: 'Bio.' 
+      },
+      { 
+        id: 9, 
+        title: 'Event', 
+        img: '/images/Energy-Nexus-Roundtable.png', 
+        desc: 'Bio.' 
+      },
+    ];
 
     const grid = document.getElementById('grid');
     let activeItem = null;
     let expandedDiv = null;
     let itemsPerRow = 0;
 
-    
     function calculateItemsPerRow() {
-      const gridItems = Array.from(grid.querySelectorAll('.grid-item'));
-      if (gridItems.length === 0) return 0;
-      
-      const firstItemTop = gridItems[0].getBoundingClientRect().top;
-      let count = 0;
-      
-      for (let item of gridItems) {
-        if (item.getBoundingClientRect().top === firstItemTop) {
-          count++;
-        } else {
-          break;
-        }
-      }
-      
-      return count;
+      const gridStyle = window.getComputedStyle(grid);
+      const gridCols = gridStyle.gridTemplateColumns.split(' ').length;
+      return gridCols;
     }
 
-    function setupClickHandlers() {
-      const items = grid.querySelectorAll('.grid-item');
+    function renderGrid() {
+      grid.innerHTML = '';
       
       items.forEach((item, idx) => {
-        item.addEventListener('click', () => toggleExpand(item, idx));
+        const div = document.createElement('div');
+        div.className = 'grid-item';
+        div.innerHTML = `
+          <img src="${item.img}" alt="${item.title}">
+          <div class="grid-item-title">${item.title}</div>
+        `;
+        
+        div.addEventListener('click', () => toggleExpand(item, idx));
+        grid.appendChild(div);
       });
     }
 
@@ -244,6 +257,20 @@
         }
 
         setInterval(nextSlide, 5000);
+
+        function togglePanel(panel) {
+    const wasActive = panel.classList.contains('active');
+    
+    // Close all panels
+    document.querySelectorAll('.panel').forEach(p => {
+        p.classList.remove('active');
+    });
+    
+    // If this panel wasn't active, open it
+    if (!wasActive) {
+        panel.classList.add('active');
+    }
+}
     </script>
 </body>
 </html>
