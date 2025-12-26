@@ -674,11 +674,11 @@ code {
         }
         
         .panel-text {
-            flex: 0 0 70%; 
+            flex: 0 0 80%; 
         }
         
         .panel-image {
-            flex: 0 0 calc(30% - 20px); 
+            flex: 0 0 calc(20% - 20px); 
           height: 100%;
         }
         
