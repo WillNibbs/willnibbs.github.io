@@ -691,6 +691,20 @@ code {
         }
 
 
+      .slide-figure {
+              width: 100%;
+              margin: 1.5rem 0;
+              padding: 0;
+          }
+          
+          .slide-figure img {
+              width: 100%;
+              height: auto;
+              display: block;
+              object-fit: cover;
+              border-radius: 8px;
+          }
+
         .dropdown {
             position: relative;
             display: inline-block;
